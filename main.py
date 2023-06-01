@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import streamlit as st
 
 # Set the URL of the Wikipedia page you want to scrape
-url = 'https://en.wikipedia.org/wiki/India'
+url = 'https://en.wikipedia.org/wiki/Pakistan'
 
 # Send a GET request to the URL
 response = requests.get(url)
