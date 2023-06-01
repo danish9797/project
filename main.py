@@ -19,6 +19,6 @@ summary_element = soup.find('div', attrs={'id': 'mw-content-text'}).find('p')
 title = title_element.text.strip() if title_element else 'Title not found'
 summary = summary_element.text.strip() if summary_element else 'Summary not found'
 
-# Print the extracted data
-print('Title:', title)
-print('Summary:', summary)
+# Display the extracted data in Streamlit
+st.write('Title:', title)
+st.write('Summary:', summary)
