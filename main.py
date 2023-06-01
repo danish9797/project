@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+import streamlit as st
 
 # Set the URL of the Wikipedia page you want to scrape
 url = 'https://en.wikipedia.org/wiki/OpenAI'
