@@ -12,13 +12,15 @@ response = requests.get(url)
 soup = BeautifulSoup(response.content, 'html.parser')
 
 # Find and extract specific elements from the HTML
-title_element = soup.find('h1')
-summary_element = soup.find('div', attrs={'id': 'mw-content-text'}).find('p')
+title_element = soup.find('h1').text.strip()
 
-# Extract the text from the elements
-title = title_element.text.strip() if title_element else 'Title not found'
-summary = summary_element.text.strip() if summary_element else 'Summary not found'
+summary_element = ''
+p_elements = soup.find_all('p')
+for p in p_elements:
+    if p.text.strip():
+        summary_element = p.text.strip()
+        break
 
 # Display the extracted data in Streamlit
-st.write('Title:', title)
-st.write('Summary:', summary)
+st.write('Title:', title_element)
+st.write('Summary:', summary_element)
