@@ -11,16 +11,10 @@ response = requests.get(url)
 # Parse the HTML content using BeautifulSoup
 soup = BeautifulSoup(response.content, 'html.parser')
 
-# Find and extract specific elements from the HTML
+# Find and extract the titles of the products
 product_elements = soup.find_all('div', class_='c2prKC')
+product_titles = [product.find('a', class_='c16H9d').text.strip() for product in product_elements]
 
-# Create a Streamlit table to display the scraped data
-table_data = []
-for product in product_elements:
-    name = product.find('a', class_='c16H9d').text.strip()
-    price = product.find('div', class_='c3gUW0').text.strip()
-    rating = product.find('div', class_='c15YQ9').text.strip()
-
-    table_data.append([name, price, rating])
-
-st.table(table_data)
+# Display the titles in Streamlit
+for title in product_titles:
+    st.write(title)
